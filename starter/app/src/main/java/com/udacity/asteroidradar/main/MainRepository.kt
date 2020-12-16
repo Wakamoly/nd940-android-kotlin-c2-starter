@@ -100,7 +100,7 @@ class MainRepository (
     /**
      * Removing rows from yesterday, used by WorkManager in [work.RefreshDataWork]
      */
-    suspend fun removeYesterday() = safeApiCall { asteroidDao.removeYesterday(getYesterdayFormatted()) }
+    private suspend fun removeYesterday() = safeApiCall { asteroidDao.removeYesterday(getYesterdayFormatted()) }
 
 
     @Suppress("BlockingMethodInNonBlockingContext")
