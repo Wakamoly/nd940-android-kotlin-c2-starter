@@ -5,7 +5,7 @@
         android:id="@+id/show_week"
         android:title="@string/next_week_asteroids" />
     <item
-        android:id="@+id/shoe_today"
+        android:id="@+id/show_today"
         android:title="@string/today_asteroids" />
     <item
         android:id="@+id/show_saved"

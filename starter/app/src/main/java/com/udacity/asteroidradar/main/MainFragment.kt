@@ -115,7 +115,7 @@ class MainFragment : Fragment() {
             R.id.show_week -> {
                 viewModel.updateAsteroidFilter(AsteroidFilter.WEEK)
             }
-            R.id.shoe_today -> {
+            R.id.show_today -> {
                 viewModel.updateAsteroidFilter(AsteroidFilter.TODAY)
             }
             R.id.show_saved -> {

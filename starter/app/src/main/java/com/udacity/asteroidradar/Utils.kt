@@ -90,6 +90,7 @@ fun ImageView.setImageFromNetworkVideo(url: String){
     val playImageView = ImageView(this.context)
     val playResId = R.drawable.ic_baseline_play_circle_outline_64
     playImageView.setImageResource(playResId)
+    playImageView.contentDescription = this.context.getString(R.string.play_image_desc)
 
     playImageView.setOnClickListener {
         val openURL = Intent(Intent.ACTION_VIEW)

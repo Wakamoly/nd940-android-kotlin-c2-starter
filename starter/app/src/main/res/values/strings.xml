@@ -21,4 +21,5 @@
     <string name="nasa_picture_of_day_content_description_format">NASA\'s picture of day: %s</string>
     <string name="help_button_explaining_astronomical_unit">Help button, explaining astronomical unit</string>
     <string name="nasa_s_photo_of_the_day">NASA\'s image of the day</string>
+    <string name="play_image_desc">Play NASA\'s video of the day on YouTube</string>
 </resources>
