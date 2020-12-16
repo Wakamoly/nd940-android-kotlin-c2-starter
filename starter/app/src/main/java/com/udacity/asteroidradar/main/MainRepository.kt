@@ -25,22 +25,22 @@ class MainRepository (
      * Return DB list of asteroid data as LiveData
      */
     val asteroids: LiveData<List<Asteroid>> = Transformations.map(asteroidDao.getAsteroids()) {
-        it.asDomainModel()
+        it?.asDomainModel()
     }
 
     val todayAsteroids: LiveData<List<Asteroid>> = Transformations.map(asteroidDao.getTodayAsteroids()) {
-        it.asDomainModel()
+        it?.asDomainModel()
     }
 
     val weekAsteroids: LiveData<List<Asteroid>> = Transformations.map(asteroidDao.getWeekAsteroids()) {
-        it.asDomainModel()
+        it?.asDomainModel()
     }
 
     /**
      * Return PhotoOTD model as LiveData
      */
     val photoOTD: LiveData<PictureOfDay> = Transformations.map(photoOfTheDayDao.getPhotoOfTheDay()) {
-        it.asDomainModel()
+        it?.asDomainModel()
     }
 
     suspend fun refreshFeed() : Resource<Any> {

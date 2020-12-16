@@ -9,7 +9,7 @@ import androidx.room.Query
 @Dao
 interface PhotoOfTheDayDao {
 
-    @Query("SELECT * FROM photoofthedaytable ORDER BY id DESC LIMIT 1")
+    @Query("SELECT * FROM photoofthedaytable WHERE id = 0 LIMIT 1")
     fun getPhotoOfTheDay(): LiveData<PhotoOfTheDayEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
