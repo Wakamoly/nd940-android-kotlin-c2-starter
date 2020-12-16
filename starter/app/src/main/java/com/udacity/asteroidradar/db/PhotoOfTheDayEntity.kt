@@ -6,7 +6,7 @@ import com.udacity.asteroidradar.PictureOfDay
 
 @Entity(tableName = "photoofthedaytable")
 data class PhotoOfTheDayEntity constructor(
-    @PrimaryKey(autoGenerate = true) val id: Long,
+    @PrimaryKey val id: Long,
     val mediaType: String,
     val title: String,
     val url: String

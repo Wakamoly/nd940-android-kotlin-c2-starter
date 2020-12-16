@@ -13,6 +13,6 @@ interface PhotoOfTheDayDao {
     fun getPhotoOfTheDay(): LiveData<PhotoOfTheDayEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(vararg photo: PhotoOfTheDayEntity)
+    suspend fun insert(photo: PhotoOfTheDayEntity)
 
 }
