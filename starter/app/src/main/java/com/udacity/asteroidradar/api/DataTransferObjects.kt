@@ -79,7 +79,7 @@ fun NetworkPhotoOTDContainer.asDomainModel() : PictureOfDay {
  */
 fun NetworkPhotoOTD.asDatabaseModel() : PhotoOfTheDayEntity {
     return PhotoOfTheDayEntity(
-        1,
+        0,
         media_type,
         title,
         url

@@ -28,6 +28,14 @@ class MainRepository (
         it.asDomainModel()
     }
 
+    val todayAsteroids: LiveData<List<Asteroid>> = Transformations.map(asteroidDao.getTodayAsteroids()) {
+        it.asDomainModel()
+    }
+
+    val weekAsteroids: LiveData<List<Asteroid>> = Transformations.map(asteroidDao.getWeekAsteroids()) {
+        it.asDomainModel()
+    }
+
     /**
      * Return PhotoOTD model as LiveData
      */
@@ -35,47 +43,10 @@ class MainRepository (
         it.asDomainModel()
     }
 
-    /*suspend fun checkDB() : Boolean {
-        var dbOkay = false
-
-        safeApiCall { asteroidDao.getAsteroids() }.apply {
-            // TODO: 12/15/20 Both results come back as Success, but also value null?
-            if (this is Resource.Success) {
-                if (value.value.isNullOrEmpty()) {
-                    Log.w("MainRepository", "checkDB: result->$dbOkay getAsteroids() result is null or empty!")
-                }else{
-                    dbOkay = true
-                    Log.d("MainRepository", "checkDB: result->$dbOkay")
-                }
-            }else{
-                Log.w("MainRepository", "checkDB: result->$dbOkay getAsteroids() Failed!!")
-            }
-        }
-
-        if(dbOkay) {
-            safeApiCall { photoOfTheDayDao.getPhotoOfTheDay() }.apply {
-                if (this is Resource.Success){
-                    if (value.value == null) {
-                        dbOkay = false
-                        Log.w("MainRepository", "checkDB: result->$dbOkay getPhotoOfTheDay() result is null!")
-                    }
-                }else{
-                    dbOkay = false
-                    Log.w("MainRepository", "checkDB: result->$dbOkay getPhotoOfTheDay() Failed!")
-                }
-            }
-        }else{
-            Log.w("MainRepository", "checkDB: result->$dbOkay getAsteroids() Failed!")
-        }
-        Log.d("MainRepository", "checkDB: result->$dbOkay")
-
-        return dbOkay
-    }*/
-
-    suspend fun refresh() {
+    suspend fun refreshFeed() : Resource<Any> {
         val retrofit = RetrofitDataSource().buildApi(AsteroidApi::class.java)
-
-        safeApiCall {
+        removeYesterday()
+        return safeApiCall {
             /**
              * startDate refers to day's formatted date, endDate refers to the formatted date of 7 days from now (defined in [Constants.kt]).
              */
@@ -98,7 +69,11 @@ class MainRepository (
             }
         }
 
-        safeApiCall {
+    }
+
+    suspend fun refreshPhotoOTD() : Resource<Any> {
+        val retrofit = RetrofitDataSource().buildApi(AsteroidApi::class.java)
+        return safeApiCall {
             /**
              * Getting today's Photo Of The Day and placing it into the DB, replacing the last POTD
              * by using the same ID in our asDatabaseModel() every time it's called along with onConflictStrategy.REPLACE
@@ -120,7 +95,6 @@ class MainRepository (
                 Log.e("MainRepository", "refresh: POTD failed!")
             }
         }
-
     }
 
     /**

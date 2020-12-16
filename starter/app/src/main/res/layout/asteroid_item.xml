@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="asteroid"
+            type="com.udacity.asteroidradar.Asteroid" />
+
+        <variable
+            name="clickListener"
+            type="com.udacity.asteroidradar.main.adapters.AsteroidListener" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> clickListener.onClick(asteroid)}"
+        android:padding="@dimen/spacing_medium"
+        tools:background="@color/colorPrimary">
+
+        <!-- Ignoring ContentDescription since we set it with a BindingAdapter ("cDescHazardous") -->
+        <ImageView
+            android:id="@+id/asteroid_status_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:statusIcon="@{asteroid.potentiallyHazardous}"
+            app:cDescHazardous="@{asteroid.potentiallyHazardous}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_status_normal"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/asteroid_codename_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{asteroid.codename}"
+            tools:text="6037 (1988 EG)"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/asteroid_status_image"
+            app:layout_constraintTop_toTopOf="parent"
+            style="@style/TextStyleHeader"
+            />
+
+        <TextView
+            android:id="@+id/asteroid_close_approach_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:text="@{asteroid.closeApproachDate}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/asteroid_status_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/asteroid_codename_text"
+            style="@style/TextStyleSubtitle"
+            tools:text="2020-12-16" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

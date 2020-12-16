@@ -20,8 +20,8 @@ class RefreshDataWork(appContext: Context, params: WorkerParameters):
         val repository = MainRepository(asteroidDao, photoOfTheDayDao)
 
         return try {
-            repository.removeYesterday()
-            repository.refresh()
+            repository.refreshFeed()
+            repository.refreshPhotoOTD()
             Result.success()
         } catch (exception: HttpException) {
             Result.retry()

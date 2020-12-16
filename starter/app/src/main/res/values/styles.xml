@@ -8,4 +8,21 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="TextStyleHeader" parent="TextAppearance.MaterialComponents.Headline4">
+        <item name="android:textColor">@color/default_text_color</item>
+        <item name="android:textSize">@dimen/header_text_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextStyleSubtitle" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:textColor">@color/default_text_color</item>
+        <item name="android:textSize">@dimen/subtitle_text_size</item>
+    </style>
+
+    <style name="TextStylePOTDSubtitle" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:textColor">@color/default_text_color</item>
+        <item name="android:textSize">@dimen/subtitle_potd_text_size</item>
+        <item name="android:textStyle">italic</item>
+    </style>
+
 </resources>
