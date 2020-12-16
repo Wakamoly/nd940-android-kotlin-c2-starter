@@ -6,8 +6,7 @@ object Constants {
     const val BASE_URL = "https://api.nasa.gov/"
 
     /**
-     * Normally not a great idea to expose our API key, but in this use-case without user auth
-     * on our own back-end we'll allow it.
+     * Normally not a great idea to expose our API key so I've removed it
      */
-    const val API_KEY = "9CL6E2NzNAwEofUZlbJ2EIvnEq6HEbVRYksDTJSX"
+    const val API_KEY = "INSERT_YOUR_API_KEY"
 }
