@@ -69,7 +69,7 @@ class MainFragment : Fragment() {
                 /**
                  * Test YouTube image loading by commenting the above and uncommenting the following function call
                  */
-                //this was an official response for 12/15/2020
+                //this was an official response for 12/16/2020
                 //addPhotoOTDLayout(PictureOfDay("video", "Sonified: The Matter of the Bullet Cluster", "https://www.youtube.com/embed/sau5-39wK1c?rel=0"))
             }
         })
